@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import User
+from .models import *
 
 # Create your views here.
 
@@ -17,3 +17,8 @@ def follow_toggle(request, id):
         user.profile.followings.add(followed_user.profile)
         print('팔로우')
     return redirect('home')
+
+
+
+def mypage(request):
+    return render(request, 'users/mypage.html')
