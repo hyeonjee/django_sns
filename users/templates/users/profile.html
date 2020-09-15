@@ -9,7 +9,7 @@
     {% for profile in user.profile.followers.all %}
             {{profile.user}}
     {% endfor %}<br><br>
-    글 목록:<br><br>
+    <글 목록><br><br>
     {% for posts in posts.all %}
         {% if user == posts.user %}
         작성자: {{posts.user}}<br>
