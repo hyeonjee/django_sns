@@ -30,6 +30,5 @@ def profile(request, id):
         'user':  get_object_or_404(User, pk = id),
         'posts': Post.objects.all(),
     }
-   
     return render(request, 'users/profile.html',context)
 

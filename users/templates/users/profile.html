@@ -5,7 +5,7 @@
 <br>
 <br>
     팔로잉 :
-    {% for profile in posts.user.profile.followings.all %}
+    {% for profile in user.profile.followings.all %}
         {{profile.user}}
     {% endfor %}<br><br>
     팔로워 :
@@ -14,12 +14,15 @@
     {% endfor %}<br><br>
     글 목록<br>
 
+    ~~~
     {% for posts in posts.all %}
-        {% if user.id %}
-            {{user.posts.title}}
+        {% if user == posts.user %}
+        작성자: {{posts.user}}<br>
+        제목: {{posts.title}}<br>
+        내용: {{posts.content}}<br>
         {% endif %}
     {% endfor %}
-    {{posts}}
+    ~~
 
 
    
