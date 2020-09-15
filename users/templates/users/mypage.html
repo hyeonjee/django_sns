@@ -9,11 +9,36 @@
         {% endfor %}
 
         <br>
-        
+
         나를 팔로우 하는 사람<br>
         {% for profile in user.profile.followers.all %}
             {{profile.user}}
         {% endfor %}
+
+        {% for post in post.all %}
+            {{post.title}}
+        {% endfor %}
+
+<br>
+~~~~~~~~~~~
+<br>
+{% for posts in posts.all %}
+    {% if user == posts.user %}
+    작성자: {{posts.user}}<br>
+    제목: {{posts.title}}<br>
+    내용: {{posts.content}}<br>
+    {% endif %}
+{% endfor %}
+
+<br>
+~~~~~~~~~~~
+<br>
+{% for user in user.all %}
+
+    {{user.posts}}
+{% endfor %}
+
+{{user.posts}}
 
 
 

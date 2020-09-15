@@ -19,23 +19,6 @@
                                     <a href="{% url 'posts:update' post.pk %}" class="btn btn-primary">수정</a>
                                 {% endif %}
                             </span>
-                        </div>
-                    </div>
-                    {% if post.image %}
-                        <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
-                    {% endif %}
-                    <div class="row">
-                        <div class="col" style="margin-left:15px; margin-top: 5px;">
-                            <span>
-                                <a href="{% url 'posts:post_like' post.id %}" style="color: red;">
-                                    {% if user in post.like_user_set.all %}
-                                        <i class="fas fa-heart" style="font-size: 30px;"></i>
-                                    {% else %}
-                                        <i class="far fa-heart" style="font-size: 30px;"></i>
-                                    {% endif %}
-                                </a>
-                            </span>
-                            <span style="vertical-align: super;">{{ post.like_count }}명이 좋아합니다.</span>
                             <div class = "follow-btn">
                                 {% if user != post.user %}
                                     {% if user.profile in post.user.profile.followers.all %}
@@ -47,9 +30,27 @@
                             </div>
                         </div>
                     </div>
+                    {% if post.image %}
+                        <img class="card-img-top" src="{{ post.image.url }}" alt="Card image cap">
+                    {% endif %}
+                    
                     <div class="card-body">
                         <div class="comment-section border-top">
-                        {{ post.content }}
+                        {{ post.content }}<br><br>
+                        <div class="row">
+                            <div class="col" style="margin-left:15px; margin-top: 5px;">
+                                <span>
+                                    <a href="{% url 'posts:post_like' post.id %}" style="color: red;">
+                                        {% if user in post.like_user_set.all %}
+                                            <i class="fas fa-heart" style="font-size: 30px;"></i>
+                                        {% else %}
+                                            <i class="far fa-heart" style="font-size: 30px;"></i>
+                                        {% endif %}
+                                    </a>
+                                </span>
+                                <span style="vertical-align: super;">{{ post.like_count }}명이 좋아합니다.</span>
+                            </div>
+                        </div>
                             <form action="{% url 'posts:create_comment' post.id %}" method="POST" style="margin-top: 50px;" class="create-comment-form">
                                 {% csrf_token %}
                                 <div class="form-group">
