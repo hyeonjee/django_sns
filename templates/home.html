@@ -11,7 +11,7 @@
                 <div class="card mb-5 sns-card">
                     <div class="row pt-2 pr-2 pl-2 pb-2">
                         <div class="col">
-                        <a href="{% url 'users:profile' post.id %}">
+                            <a href="{% url 'users:profile' post.user.id %}">
                             <span>{{ post.user.username }}</span>
                         </a>
                             <span class="float-right">

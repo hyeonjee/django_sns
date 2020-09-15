@@ -42,29 +42,5 @@
 
 
 
-
-        <!-- {% for user.profile in user.profile.followings.all %}
-            {{user.profile.followings}}
-        {% endfor %} -->
-
-
-
-        <!-- {{user.profile.followings.all}} -->
-        <div class="row">
-            {% for profile in likes %}
-                <div class="col-md-4 col-12">
-                    <div class="card" style="width: 20rem; margin-top:20px;">
-                        <div class="card-body">
-                            <h5 class="card-title">{{like.product.product_name}}</h5>
-                            <a href="{% url 'products:show' like.product.id %}" class="btn btn-primary">상세보기</a>
-                        </div>
-                    </div>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <h3>로그인 후 이용이 가능합니다.</h3>
-        <a href="{% url 'account_login' %}" class="btn btn-warning">로그인</a>
-        <a href="{% url 'account_signup' %}" class="btn btn-warning">회원가입</a>
-    {% endif %}
-</div>
+{% endif %}
+           

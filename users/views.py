@@ -26,5 +26,10 @@ def mypage(request):
     return render(request, 'users/mypage.html',{'posts':posts})
 
 def profile(request, id):
-    posts = get_object_or_404(Post, pk=id)
-    return render(request, 'users/profile.html',{'posts':posts} )
+    context = {
+        'user':  get_object_or_404(User, pk = id),
+        'posts': Post.objects.all(),
+    }
+   
+    return render(request, 'users/profile.html',context)
+

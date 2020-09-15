@@ -1,2 +1,27 @@
 <h1>프로필</h1>
-<h2>이름 : {{posts.user}}</h2>
+<h2>
+    이름 : 
+{{user}}
+<br>
+<br>
+    팔로잉 :
+    {% for profile in posts.user.profile.followings.all %}
+        {{profile.user}}
+    {% endfor %}<br><br>
+    팔로워 :
+    {% for profile in user.profile.followers.all %}
+            {{profile.user}}
+    {% endfor %}<br><br>
+    글 목록<br>
+
+    {% for posts in posts.all %}
+        {% if user.id %}
+            {{user.posts.title}}
+        {% endif %}
+    {% endfor %}
+    {{posts}}
+
+
+   
+</h2>
+
