@@ -24,3 +24,7 @@ def follow_toggle(request, id):
 def mypage(request):
     posts = Post.objects.all()
     return render(request, 'users/mypage.html',{'posts':posts})
+
+def profile(request, id):
+    posts = get_object_or_404(Post, pk=id)
+    return render(request, 'users/profile.html',{'posts':posts} )

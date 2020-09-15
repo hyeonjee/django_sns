@@ -11,8 +11,9 @@
                 <div class="card mb-5 sns-card">
                     <div class="row pt-2 pr-2 pl-2 pb-2">
                         <div class="col">
+                        <a href="{% url 'users:profile' post.id %}">
                             <span>{{ post.user.username }}</span>
-
+                        </a>
                             <span class="float-right">
                                 {% if user == post.user %}
                                     <a href="{% url 'posts:delete' post.pk %}" class="btn btn-primary" style="margin-left: 15px;">삭제</a>
@@ -75,7 +76,7 @@
                 <div class="card-body">
                     {% if user.is_authenticated %}
                         <h5 class="card-title">{{ user.username }}님 환영합니다.</h5>
-                        <a href="#" class="btn btn-primary">마이페이지</a>
+                        <a href="{% url 'users:mypage' %}" class="btn btn-primary">마이페이지</a>
                     {% else %}
                         <a href="{% url 'account_login' %}" class="btn btn-primary">로그인</a>
                     {% endif %}
