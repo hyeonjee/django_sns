@@ -8,6 +8,12 @@
             {{profile.user}}
         {% endfor %}
 
+        <br>
+        
+        나를 팔로우 하는 사람<br>
+        {% for profile in user.profile.followers.all %}
+            {{profile.user}}
+        {% endfor %}
 
 
 
