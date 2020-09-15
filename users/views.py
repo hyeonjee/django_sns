@@ -20,11 +20,6 @@ def follow_toggle(request, id):
     return redirect('home')
 
 
-
-def mypage(request):
-    posts = Post.objects.all()
-    return render(request, 'users/mypage.html',{'posts':posts})
-
 def profile(request, id):
     context = {
         'user':  get_object_or_404(User, pk = id),
