@@ -6,7 +6,7 @@ class Post(models.Model):
     title = models.CharField(max_length=50, null=False)
     content = models.TextField()
     view_count = models.IntegerField(default=0)
-    image = models.ImageField(upload_to="image/post")
+    image = models.ImageField(upload_to="image/post", blank="true") #blank=ture는 require=false를 넣어주는 것과 같음
     user = models.ForeignKey(User, on_delete = models.CASCADE)
     like_user_set = models.ManyToManyField(User, blank=True, related_name='like_user_set', through='Like')
     created_at = models.DateTimeField(auto_now_add=True)
