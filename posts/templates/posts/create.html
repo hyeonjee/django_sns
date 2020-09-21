@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
+<!-- <div class="container">
     <h2 class="mt-5">새로운 글 쓰기</h2>
     <form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -17,6 +17,13 @@
             <label>이미지</label>
             <input type="file" name="image">
         </div>
+        <input type="submit" value="작성하기" class="btn btn-primary">
+    </form>
+</div> -->
+<div>
+    <form action="{% url 'posts:create' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form.as_p}}    <!--table이라고 써있으면 테이블 형태로 받음-->
         <input type="submit" value="작성하기" class="btn btn-primary">
     </form>
 </div>
