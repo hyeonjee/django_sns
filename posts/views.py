@@ -31,15 +31,23 @@ def create(request):
 
 @login_required
 def update(request, id):
-    post = get_object_or_404(Post, pk=id)
-    if request.method == "POST":
-        post.title = request.POST.get("title")
-        post.content = request.POST.get("content")
-        post.image = request.FILES.get("image")
-        post.save()
-        return redirect('home')
-    return render(request, 'posts/update.html', {"post": post})
+    # post = get_object_or_404(Post, pk=id)
+    # if request.method == "POST":
+    #     post.title = request.POST.get("title")
+    #     post.content = request.POST.get("content")
+    #     post.image = request.FILES.get("image")
+    #     post.save()
+    #     return redirect('home')
+    # return render(request, 'posts/update.html', {"post": post})
     
+    post = get_object_or_404(Post,pk = id)
+    form = PostForm(instance=post)
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save(user = request.user)
+        return redirect('home')
+    return render(request, 'posts/update.html', {'post':post, 'form':form})
 
 @login_required
 def delete(request, id):
